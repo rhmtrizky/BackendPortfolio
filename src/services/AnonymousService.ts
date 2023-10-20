@@ -9,7 +9,11 @@ class AnonymousService {
 
   async findAll(req: Request, res: Response) {
     try {
-      const anonymousFetch = await this.anonymousRepository.find();
+      const anonymousFetch = await this.anonymousRepository.find({
+        order: {
+          id: 'DESC',
+        },
+      });
       console.log('ini data anonymous message', anonymousFetch);
       return anonymousFetch;
     } catch (error) {
