@@ -1,5 +1,4 @@
 import { Repository } from 'typeorm';
-import { Contact } from '../entities/Contact';
 import { AppDataSource } from '../data-source';
 import { Request, Response } from 'express-serve-static-core';
 import { Anonymous } from '../entities/Anonymous';
@@ -30,6 +29,7 @@ class AnonymousService {
       });
       console.log('successful create anonymous', createAnonymous);
       const createdAnonymous = this.anonymousRepository.save(createAnonymous);
+      console.log('ini create message', createdAnonymous);
       return res.status(200).json(createAnonymous);
     } catch (err) {
       return res.status(500).json({ error: 'sorry there was an error to create anonymous', err });
